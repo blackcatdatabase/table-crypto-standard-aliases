@@ -43,7 +43,7 @@ final class CryptoStandardAliaseRepository implements RepoContract, KeysetRepoCo
 
     // --- INSERT / BULK -------------------------------------------------------
 
-    public function insert(array #[\SensitiveParameter] $row): void {
+    public function insert(#[\SensitiveParameter] array $row): void {
         $row = $this->filterCols($this->normalizeInputRow($row));
         if (!$row) return;
 
@@ -107,13 +107,13 @@ final class CryptoStandardAliaseRepository implements RepoContract, KeysetRepoCo
     }
 
     /** Standard upsert – preserves soft-delete (no revive). */
-    public function upsert(array #[\SensitiveParameter] $row): void
+    public function upsert(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, false);
     }
 
     /** Upsert that revives soft-delete (sets deleted_at = NULL on conflict). */
-    public function upsertRevive(array #[\SensitiveParameter] $row): void
+    public function upsertRevive(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, true);
     }
@@ -216,7 +216,7 @@ final class CryptoStandardAliaseRepository implements RepoContract, KeysetRepoCo
 
     // --- UPDATE / DELETE / RESTORE ------------------------------------------
 
-    public function updateById(int|string|array $id, array #[\SensitiveParameter] $row): int {
+    public function updateById(int|string|array $id, #[\SensitiveParameter] array $row): int {
         $row = $this->normalizeInputRow($row);
 
         $tbl   = Ident::qi($this->db, Definitions::table());
@@ -428,7 +428,7 @@ final class CryptoStandardAliaseRepository implements RepoContract, KeysetRepoCo
         $sql = "SELECT * FROM {$tbl} WHERE {$where}";
         if ($guard !== '1=1') { $sql .= ' AND ' . $guard; }
 
-        $dialect = $this->db->getDialect(); // 'postgres' | 'mysql' | 'mariadb' ...
+        $dialect = $this->db->dialect(); // 'postgres' | 'mysql' | 'mariadb' ...
         $for = 'FOR UPDATE';
         if ($strength === 'share') {
             if ($dialect === 'postgres' || $dialect === 'mysql') { $for = 'FOR SHARE'; }
@@ -473,20 +473,4 @@ final class CryptoStandardAliaseRepository implements RepoContract, KeysetRepoCo
 
     // === Generated unique helpers (per table UNIQUE/PK) ===
     
-    /** @return array<string,mixed>|\BlackCat\Database\Packages\CryptoStandardAliases\Dto\CryptoStandardAliaseDto|null */
-    public function getByAlias(string $alias, bool $asDto = false): array|\BlackCat\Database\Packages\CryptoStandardAliases\Dto\CryptoStandardAliaseDto|null {
-        $row = $this->getByUnique([ 'alias' => $alias ]);
-        if (!$asDto || !$row) return $row;
-        return \BlackCat\Database\Packages\CryptoStandardAliases\Mapper\CryptoStandardAliaseDtoMapper::fromRow($row);
-    }
-    public function existsByAlias(string $alias): bool {
-        $where = 't.' . Ident::q($this->db, 'alias') . ' = :uniq_alias';
-        return $this->exists($where, [ 'uniq_alias' => $alias ]);
-    }
-    /** @return int|string|null */
-    public function getIdByAlias(string $alias) {
-        $row = $this->getByAlias($alias);
-        return $row ? ($row['alias'] ?? null) : null;
-    }
-
 }
