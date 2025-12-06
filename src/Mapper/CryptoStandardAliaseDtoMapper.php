@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class CryptoStandardAliaseDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'algo_id' => 'algoId', 'created_at' => 'createdAt' ];
+    private const COL_TO_PROP = [ 'alias' => 'alias', 'algo_id' => 'algoId', 'notes' => 'notes', 'created_at' => 'createdAt' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [];
@@ -39,13 +39,8 @@ final class CryptoStandardAliaseDtoMapper
 
     private static function tz(): DateTimeZone
     {
-        if (self::$tzObj instanceof DateTimeZone) {
-            return self::$tzObj;
-        }
-        try {
+        if (!(self::$tzObj instanceof DateTimeZone)) {
             self::$tzObj = new DateTimeZone(self::TZ);
-        } catch (\Throwable) {
-            self::$tzObj = new DateTimeZone('UTC');
         }
         return self::$tzObj;
     }
