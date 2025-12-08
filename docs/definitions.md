@@ -7,7 +7,7 @@ Friendly aliases mapped to crypto_algorithms entries.
 | --- | --- | --- | --- | --- |
 | algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |
 | alias | VARCHAR(120) | NO |  | Alias string (primary key). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | notes | TEXT | YES |  | Optional documentation or rollout notes. |
 
 ## Engine Details
@@ -41,5 +41,5 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_crypto_standard_aliases | mysql | algorithm=MERGE, security=INVOKER | [packages\crypto-standard-aliases\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/crypto-standard-aliases/schema/040_views.mysql.sql) |
-| vw_crypto_standard_aliases | postgres |  | [packages\crypto-standard-aliases\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/crypto-standard-aliases/schema/040_views.postgres.sql) |
+| vw_crypto_standard_aliases | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_crypto_standard_aliases | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
