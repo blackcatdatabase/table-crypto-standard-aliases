@@ -7,7 +7,7 @@ Friendly aliases mapped to crypto_algorithms entries.
 | --- | --- | --- | --- | --- |
 | algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |
 | alias | VARCHAR(120) | NO |  | Alias string (primary key). |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | notes | TEXT | YES |  | Optional documentation or rollout notes. |
 
 ## Engine Details
