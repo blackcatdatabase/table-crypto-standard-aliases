@@ -5,10 +5,10 @@ Friendly aliases mapped to crypto_algorithms entries.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |
 | alias | VARCHAR(120) | NO |  | Alias string (primary key). |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |
 | notes | TEXT | YES |  | Optional documentation or rollout notes. |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 
 ## Engine Details
 
@@ -41,5 +41,5 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_crypto_standard_aliases | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
-| vw_crypto_standard_aliases | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_crypto_standard_aliases | mysql | algorithm=MERGE, security=INVOKER | [../schema/040_views.mysql.sql](../schema/040_views.mysql.sql) |
+| vw_crypto_standard_aliases | postgres |  | [../schema/040_views.postgres.sql](../schema/040_views.postgres.sql) |

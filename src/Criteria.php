@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'alias', 'notes' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'alias', 'algo_id', 'notes', 'created_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'alias', 'algo_id', 'notes', 'created_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
