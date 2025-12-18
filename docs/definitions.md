@@ -3,12 +3,12 @@
 Friendly aliases mapped to crypto_algorithms entries.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| alias | VARCHAR(120) | NO |  | Alias string (primary key). |
-| algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |
-| notes | TEXT | YES |  | Optional documentation or rollout notes. |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| alias | VARCHAR(120) | NO |  | Alias string (primary key). |  |
+| algo_id | BIGINT | NO |  | Target algorithm id (FK crypto_algorithms.id). |  |
+| notes | TEXT | YES |  | Optional documentation or rollout notes. |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
 
 ## Engine Details
 
