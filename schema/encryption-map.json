@@ -1,0 +1,20 @@
+{
+  "tables": {
+    "crypto_standard_aliases": {
+      "columns": {
+        "algo_id": {
+          "strategy": "passthrough"
+        },
+        "alias": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "notes": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
